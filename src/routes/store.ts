@@ -5,7 +5,7 @@ var JWT = require('../controllers/JWT');
 
 const storeHandler = require('../controllers/storeHandler');
 
-router.get('/items', JWT.check, async (req: any, res: any) => {
+router.get('/items', async (req: any, res: any) => {
   const url = storeHandler.UrlConstructor(req.query);
 
   try {
@@ -21,7 +21,7 @@ router.get('/items', JWT.check, async (req: any, res: any) => {
   }
 });
 
-router.get('/item/:id', JWT.check, async (req: any, res: any) => {
+router.get('/item/:id', async (req: any, res: any) => {
   try {
     const item = await axios.get(
       `https://fakestoreapi.com/products/${req.params.id}`
@@ -36,7 +36,7 @@ router.get('/item/:id', JWT.check, async (req: any, res: any) => {
   }
 });
 
-router.get('/categories', JWT.check, async (req: any, res: any) => {
+router.get('/categories', async (req: any, res: any) => {
   try {
     const categories = await axios.get(
       'https://fakestoreapi.com/products/categories'
